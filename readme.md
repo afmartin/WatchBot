@@ -1,25 +1,31 @@
-## Laravel PHP Framework
+## WatchBot 
+# CMPT 395 - Software Engineering Assignment - MacEwan University
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This is a demo webapp that uses user authentication.  When users are authenticated they can post videos from YouTube to be added to the video table.  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+## List of Actions
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+This is a thorough list of everything possible on the website:
+- Register/login/logout
+- Modify profile
+- Browse other users
+- See a user's profile.
+- Post a link to a YouTube video
+- See a posted video (which is an embedded YouTube video).
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## YouTube API
 
-## Official Documentation
+If possible within deadline for assignment, WatchBot will query YouTube's API for video details.
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+## PureCSS 
 
-### Contributing To Laravel
+This project uses PureCSS (http://purecss.io/) for responsive web design.  PureCSS is licenses under the MIT license included in the Public directory.
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+## License
 
-### License
+Code in the app folder is licensed the MIT license.  
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+
+
