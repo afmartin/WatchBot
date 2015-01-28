@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@homePage'); 
+Route::get('/users', 'UserController@index');
+Route::get('/users/register', 'UserController@showRegister');
+Route::post('/users/register', 'UserController@doRegister');
+Route::get('/users/edit/','UserController@edit'); 
+Route::get('/users/show/{username}','UserController@show');
+Route::post('/users/update/','UserController@update');
+Route::post('/login', 'UserController@login'); 
+Route::get('/logout', 'UserController@logout'); 
