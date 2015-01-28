@@ -24,12 +24,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password', 'remember_token');
 
     /**
-     * Validation sent for a loop.
+     * Validation sent me for a loop.
      *
      * http://laravelbook.com/laravel-input-validation/
      * is a VERY good resource 
      */
-    public static function validate($input) {   
+    public static function register_validate($input) {   
         $rules = array( 'username' => 'Required|Min:5|Unique:users',
                         'email' => 'Required|Email|Unique:users',
                         'password' => 'Required|Min:8|Confirmed',
@@ -37,8 +37,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
         $validator = Validator::make($input, $rules);
         return $validator;
-
     }
 
+    public static function update_validate($input) {
+        $rules = array ( 'username' => 'Min:5|Unique:users',
+                         'email' => 'Email|Unique:users',
+                         'password' => 'Min:8|Confirmed',
+                         'password_confirmtaion' => 'Min' );
 
+        $validator = Validator::make($input, $rules);
+        return $validator;
+    }
 }

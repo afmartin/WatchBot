@@ -65,7 +65,7 @@
     <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
         <br>
         @if(Session::has('errors'))
-            <ul>
+            <ul style="font-weight:bold; border: 2px RED solid;">
             @foreach( Session::pull('errors') as $error) 
                 <li>{{ $error }}</li>
             @endforeach

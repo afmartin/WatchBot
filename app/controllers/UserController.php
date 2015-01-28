@@ -28,13 +28,33 @@ class UserController extends BaseController {
         $user = User::where('username', '=', Auth::user()->username)->firstOrFail();
 
         if (Hash::check(Input::get('old_password'), $user->password)) {
-            $user->email = Input::get('email');
-            $user->username = Input::get('username');
-            $user->password = Hash::make(Input::get('password'));
-            $user->save();
+            $user_input = Input::all();
 
-            Session::flash('message', "$user->username  updated sucessfully!  Thank you.");
-            return Redirect::to("users/show/$user->username");
+            if ($user_input['email'] == $user->email) 
+                $user_input['email'] = null;
+            if ($user_input['username'] == $user->username)
+                $user_input['username'] = null;
+
+            $validator = User::update_validate($user_input);
+             if ($validator->fails()) {
+                Session::flash("errors", $validator->messages()->all());
+                return Redirect::back();
+            } else {
+                if ($user_input['email'])
+                    $user->email = Input::get('email');
+
+                if ($user_input['username'])
+                    $user->username = Input::get('username');
+
+                if ($user_input['password'])
+                    $user->password = Hash::make(Input::get('password'));
+
+
+                $user->save();
+
+                Session::flash('message', "$user->username  updated sucessfully!  Thank you.");
+                return Redirect::to("users/show/$user->username");
+            }
         } else {
             // User got wrong password.
             Session::flash('message', "You have entered your current password incorrectly.");
@@ -63,7 +83,7 @@ class UserController extends BaseController {
 
     public function doRegister() {
         $input = Input::all();
-        $validator = User::validate($input);
+        $validator = User::register_validate($input);
 
         if ($validator->fails()) {
             Session::flash("errors", $validator->messages()->all());
