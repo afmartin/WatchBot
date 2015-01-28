@@ -1,5 +1,5 @@
-## WatchBot 
-# CMPT 395 - Software Engineering Assignment - MacEwan University
+# WatchBot 
+### CMPT 395 - Software Engineering Assignment - MacEwan University
 
 This is a demo webapp that uses user authentication.  When users are authenticated they can post videos from YouTube to be added to the video table.  
 
@@ -19,7 +19,7 @@ If possible within deadline for assignment, WatchBot will query YouTube's API fo
 
 ## PureCSS 
 
-This project uses PureCSS (http://purecss.io/) for responsive web design.  PureCSS is licenses under the MIT license included in the Public directory.
+This project uses PureCSS (http://purecss.io/) for responsive web design.  PureCSS is licenses under the Yahoo BSD license included in the Public directory.
 
 ## License
 
