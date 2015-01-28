@@ -21,9 +21,10 @@
     {{ Form::password('password_confirmation') }}
 
     {{ Form::submit("Update", array(
-                    'class' => 'pure-button pure-button- primary')) }}
+                    'class' => 'pure-button pure-button-primary')) }}
 
     {{ Form::close() }}
 
+<a href="{{ url("users/destroy") }}">Delete Account</a>
 
 @stop

@@ -43,7 +43,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $rules = array ( 'username' => 'Min:5|Unique:users',
                          'email' => 'Email|Unique:users',
                          'password' => 'Min:8|Confirmed',
-                         'password_confirmtaion' => 'Min' );
+                         'password_confirmtaion' => 'Min:8' );
 
         $validator = Validator::make($input, $rules);
         return $validator;

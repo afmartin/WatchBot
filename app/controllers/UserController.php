@@ -1,8 +1,7 @@
 <?php
 
-class UserController extends BaseController {
 
-    
+class UserController extends BaseController {
     public function index() {
         $users = User::all(); 
         $data = array(  'users' =>  $users,
@@ -36,7 +35,7 @@ class UserController extends BaseController {
                 $user_input['username'] = null;
 
             $validator = User::update_validate($user_input);
-             if ($validator->fails()) {
+            if ($validator->fails()) {
                 Session::flash("errors", $validator->messages()->all());
                 return Redirect::back();
             } else {
@@ -94,7 +93,6 @@ class UserController extends BaseController {
             $user->email = Input::get('email');
             $user->username = Input::get('username');
 
-            // Explain why it's good to hash.
             $user->password = Hash::make(Input::get('password'));
 
             $user->save();
@@ -102,10 +100,40 @@ class UserController extends BaseController {
 
             $username = Input::get('username');
             $data = array (
-                'title' => 'Registered',
-                'username' => 'Username');
+                'title' => 'Registered');
             Session::flash('message', "$username sucessfully registered!  Thank you.");
             return Redirect::to('/');
+        }
+    }
+    public function Destroy() {
+        if (Auth::check()) {
+            $user = User::where('username','=', Auth::user()->username)->firstOrFail();
+
+            if (Hash::check(Input::get('password'), $user->password)) {
+                Auth::logout();
+                Session::flash("message", "User: " . $user['username'] ." deleted!");
+                $user->delete();
+                return Redirect::to("/users"); 
+            } else {
+                Session::flash('message', "Incorrect password");
+                return Redirect::to("/users/destroy");
+
+            }
+        } else {
+            Session::flash("message", "You are not authorized to do this acount.");
+            return Redirect::to("/users");
+        }
+    }
+
+
+    public function showDestroy() {
+        if (Auth::check()) {
+            $data = array (
+                'title' => 'Delete Account');
+            return View::make("users/destroy")->with($data);
+        } else {
+            Session::flash("message", "You are not authorized to do this action.");
+            return Redirect::to("/users");
         }
     }
 

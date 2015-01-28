@@ -7,8 +7,6 @@
 
     <title>WatchBot |  {{ $title }}</title>
 
-    
-
 
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 
@@ -56,7 +54,11 @@
 
             <li class="pure-menu-selected"><a href="{{ url("/") }}">Home</a></li>
             <li><a href="{{ url("users") }}">Profiles</a></li>
-            <li><a href="{{ url("users/register") }}">Sign Up</a></li>
+            @if( Auth::check() )
+                <li><a href="{{ url("logout") }}">Logout</a></li>
+            @else
+                <li><a href="{{ url("users/register") }}">Sign Up</a></li>
+            @endif  
         </ul>
     </div>
 </div>
@@ -73,14 +75,14 @@
         @endif 
 
         @if(Session::has('message'))
-            {{ Session::pull('message') }}
+            <p style="font-weight:bold; border:2px black solid; text-align:center;">{{ Session::pull('message') }}</p>
         @endif
 
         @yield('content')
     </div>
     <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
         @if( !Auth::check() )
-
+        <br>
         <h3>Login</h3>
 
         <p>Welcome guest!  We recommend logging in to enjoy our services.</p>
@@ -107,7 +109,7 @@
         </p>
 
         <ul>
-            <li><a>My Account</a></li>
+            <li><a href="{{ url("users/edit") }}">My Account</a></li>
             <li><a href="{{ url("logout") }}">Log out</a></li>
         </ul>
 

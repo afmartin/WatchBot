@@ -11,6 +11,8 @@
 |
 */
 
+Route::when('*', 'csrf', array('post'));
+
 Route::get('/', 'HomeController@homePage'); 
 Route::get('/users', 'UserController@index');
 Route::get('/users/register', 'UserController@showRegister');
@@ -20,3 +22,5 @@ Route::get('/users/show/{username}','UserController@show');
 Route::post('/users/update/','UserController@update');
 Route::post('/login', 'UserController@login'); 
 Route::get('/logout', 'UserController@logout'); 
+Route::get('/users/destroy', 'UserController@showDestroy');
+Route::post('/users/destroy', 'UserController@Destroy');
