@@ -23,6 +23,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+    protected $attributes = array(
+        'bio' => 'Set your bio by going to my account!'
+    );
+
+    public function videos() {
+        return $this->hasMany("Video");
+    }
+
     /**
      * Validation sent me for a loop.
      *

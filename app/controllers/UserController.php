@@ -2,15 +2,22 @@
 
 
 class UserController extends BaseController {
+
+
+    /**
+     * Produces a list of users.
+     */
     public function index() {
-        $users = User::all(); 
+        $users = User::all();
         $data = array(  'users' =>  $users,
             'title' => 'Users');
 
         return View::make('users/index')->with($data);
     }
 
-
+    /**
+     *
+     */
     public function show($username) {
         try {
             $user = User::where('username','=',$username)->firstOrFail();
@@ -48,6 +55,7 @@ class UserController extends BaseController {
                 if ($user_input['password'])
                     $user->password = Hash::make(Input::get('password'));
 
+                $user->bio = $user_input['bio'];
 
                 $user->save();
 
@@ -112,6 +120,12 @@ class UserController extends BaseController {
             if (Hash::check(Input::get('password'), $user->password)) {
                 Auth::logout();
                 Session::flash("message", "User: " . $user['username'] ." deleted!");
+
+                // We also should delete all videos belonging to the user.
+                $videos = $user->videos;
+                foreach ($videos as $video) {
+                    $video->delete();
+                }
                 $user->delete();
                 return Redirect::to("/users"); 
             } else {

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration {
             $newtable->string('email')->unique();
             $newtable->string('username', 100)->unique();
             $newtable->string('password', 100);
+            $newtable->text("bio");
 
             // Required to stop cookie forgery.
             $newtable->rememberToken();

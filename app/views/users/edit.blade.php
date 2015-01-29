@@ -11,6 +11,10 @@
     {{ Form::label('username', 'Username') }}
     {{ Form::text('username', $user->username) }}
 
+    {{ Form::label('bio', 'Enter your bio') }}
+    {{ Form::textarea('bio', $user->bio) }}
+
+
     {{ Form::label('old_password', 'Old Password') }}
     {{ Form::password('old_password') }}
 
@@ -19,6 +23,7 @@
     
     {{ Form::label('password_confirmation', 'New Password') }}
     {{ Form::password('password_confirmation') }}
+
 
     {{ Form::submit("Update", array(
                     'class' => 'pure-button pure-button-primary')) }}

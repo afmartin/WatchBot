@@ -10,6 +10,7 @@ class UserTableSeeder extends Seeder {
                 'email' => $faker->email,
                 'username' => $faker->unique->userName,
                 'password' => $faker->word,
+                'bio' => $faker->text(),
                 'remember_token' => str_random(50)
             ));
         }
