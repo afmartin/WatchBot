@@ -2,57 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A layout example that shows off a responsive product landing page.">
 
     <title>WatchBot |  {{{ $title }}}</title>
 
-
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-
-
-
-<!--[if lte IE 8]>
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css">
-  
-<![endif]-->
-<!--[if gt IE 8]><!-->
-  
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-  
-<!--<![endif]-->
-
-
-
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-
-
-
-  
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="{{{ asset("css/layouts/marketing-old-ie.css" ) }}}>
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="{{{ asset("css/layouts/marketing.css") }}}">
-    <!--<![endif]-->
-  
-
-
-    
-
-    
-
+    {{ HTML::style("css/master.css")}}
 </head>
 <body>
-
-<div class="header">
-    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="{{{ url("/") }}}">WatchBot</a>
-
+<div id="container">
+<div class="banner"></div>
+    <div class="menu">
         <ul>
-
-            <li class="pure-menu-selected"><a href="{{{ url("/") }}}">Home</a></li>
+            <li><a href="{{{ url("/") }}}">Home</a></li>
             <li><a href="{{{ url("videos") }}}">Videos</a></li>
             <li><a href="{{{ url("users") }}}">Profiles</a></li>
             @if( Auth::check() )
@@ -62,13 +23,11 @@
             @endif  
         </ul>
     </div>
-</div>
 
-<div class="pure-g">
-    <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+    <div class="main">
         <br>
         @if(Session::has('errors'))
-            <ul style="font-weight:bold; border: 2px RED solid;">
+            <ul style="font-weight:bold; border: 2px RED solid; margin:5px 5px 5px 5px; padding: 5px 5px 5px 5px;">
             @foreach( Session::pull('errors') as $error) 
                 <li>{{{ $error }}}</li>
             @endforeach
@@ -76,12 +35,12 @@
         @endif 
 
         @if(Session::has('message'))
-            <p style="font-weight:bold; border:2px black solid; text-align:center;">{{{ Session::pull('message') }}}</p>
+            <p style="padding: 5px 5px 5px 5px; margin:5px 5px 5px 5px; font-weight:bold; border:2px black solid; text-align:center;">{{{ Session::pull('message') }}}</p>
         @endif
 
         @yield('content')
     </div>
-    <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+    <div class="side">
         @if( !Auth::check() )
         <br>
         <h3>Login</h3>
@@ -124,6 +83,7 @@
                 <a href="{{{ url("/videos/show/" . $side_vid->id ) }}}"><img src="http://i.ytimg.com/vi/{{{ $side_vid->video }}}/default.jpg"></a>
             @endforeach
     </div>
-</div>
+    <br style="clear:both;">
+    </div>
 </body>
 </html>

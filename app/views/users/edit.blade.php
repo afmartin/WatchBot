@@ -4,7 +4,7 @@
 @section("content")
 <h3>Edit Profile</h3>
 
-{{ Form::open(array('url' => 'users/update', 'class' => "pure-form pure-form-stacked")) }}
+{{ Form::open(array('url' => 'users/update')) }}
     {{ Form::label('email', 'Email Address') }}
     {{ Form::text('email', $user->email ) }}
 

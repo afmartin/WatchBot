@@ -2,11 +2,11 @@
 
 @section('content')
 <h3>{{{ $user->username }}}'s Profile</h3>
-
+<br>
 <a href="{{{ url("videos/from/" . $user->username) }}}">View Videos Shared</a>
-
-<h5>Email: {{{ $user->email }}}</h5>
-<h5>Registered: {{{ $user->created_at }}}</h5>
+<br><br>
+<p>Email: {{{ $user->email }}}</p>
+<p>Registered: {{{ $user->created_at }}}</p>
 <h5>Bio</h5>
 <p>{{{ $user->bio }}}</p>
 

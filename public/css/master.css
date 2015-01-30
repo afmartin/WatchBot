@@ -1,10 +1,102 @@
 * {
 margin: 0px 0px 0px 0px;
-padding: 0px 0px; 0px; 0px;
+padding: 0px 0px 0px 0px;
+    font-size: large;
+    font-family: "Verdana", Arial, serif;
 }
 
+h1,h2,h3,h4,h5 {
+    margin-bottom:20px;
+    text-decoration: underline;
+    margin-top:10px;
+}
+
+ul {
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+a {
+    color:#555555;
+    text-decoration:none;
+}
+
+a:hover {
+    text-decoration: overline underline;
+}
 body {
     text-align:center;
-    margin-right:30%;
-    margin-left:30%;
+    background-image: url("../img/pattern.png");
+}
+
+#container {
+    margin: 50px auto 50px auto;
+    width:1024px;
+    background-color:#ffffff;
+    border: 5px #000000 solid;
+}
+
+div.banner {
+    height:150px;
+    background-image:url("../img/banner.png");
+    border-bottom:5px #000000 solid;
+}
+
+div.menu {
+    height:50px;
+    background-color:#000000;
+}
+
+div.menu li {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline;
+    border-left: 3px #ffffff dotted;
+    border-right: 3px #ffffff dotted;
+}
+
+div.menu li a {
+    font-size:30px;
+    height:50px;
+    color:#ffffff;
+}
+
+div.menu li a:hover {
+    color:#bbbbbb;
+    text-decoration: none;
+}
+
+div.main {
+    width:589px;
+    padding:5px 5px 5px 5px;
+    border-right:1px solid #000000;
+    float:left;
+    min-height:600px;
+}
+
+div.side {
+    width:424px;
+    float:right;
+}
+
+form {
+    text-align:left;
+    padding-left:10px;
+}
+
+input, label, select, textarea {
+    margin-bottom:5px;
+    display: block;
+}
+
+table {
+    width:100%;
+}
+th {
+    border: 1px solid #000000;
+}
+td {
+    border:1px dashed #555555;
+    text-align:left;
+    padding-left:5px;
 }

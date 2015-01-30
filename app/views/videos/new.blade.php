@@ -3,7 +3,7 @@
 @section("content")
     <h3>Add a Video</h3>
 
-    {{ Form::open(array('url' => 'videos/create', 'class' => "pure-form pure-form-stacked")) }}
+    {{ Form::open(array('url' => 'videos/create')) }}
 
     {{Form::label("title", "Title")}}
     {{Form::text("title")}}

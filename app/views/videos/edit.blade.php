@@ -2,7 +2,7 @@
 
 @section("content")
     <h3>Edit Video</h3>
-{{ Form::open(array('url' => "videos/update/$video->id", 'class' => "pure-form pure-form-stacked")) }}
+{{ Form::open(array('url' => "videos/update/$video->id")) }}
 
 {{Form::label("title", "Title")}}
 {{Form::text("title", $video->title)}}
