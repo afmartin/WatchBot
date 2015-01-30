@@ -23,14 +23,16 @@ Composer will install the additional dependencies.
 
 ## Installation
 
+You can download Composer at: https://getcomposer.org/doc/00-intro.md
+
 Enter the below commands into a terminal to get setup with the demo webapp running on a local test server with randomized data already inserted.
 
 
     $ git clone https://github.com/afmartin/WatchBot.git
-    $ composer install
-    $ artisan migrate
-    $ artisan db:seed
-    $ artisan serve
+    $ php composer install
+    $ php artisan migrate
+    $ php artisan db:seed
+    $ php artisan serve
 
 
 Running `composer install` will install necessary dependencies.  
