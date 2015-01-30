@@ -12,8 +12,8 @@ class Video extends Eloquent {
 
     public static function validate($input) {
         $rules = array(
-            "title" => "Min:3|Required",
-            "video" => "Required"
+            "title" => "Min:3|Required|Unique:videos",
+            "video" => "Required|Unique:videos"
         );
 
         $validator = Validator::make($input, $rules);

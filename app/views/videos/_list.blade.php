@@ -27,3 +27,5 @@
         </table>
 
 @endif
+
+<a href="{{{ url("/videos/new") }}}">Add a Video</a>

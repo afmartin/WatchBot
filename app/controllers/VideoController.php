@@ -68,20 +68,21 @@ class VideoController extends BaseController {
            $video->views = 0;
 
            // We need to extract the YouTube video ID.
-           preg_match('/.youtube\.com\/watch\?v=(.+)&?/', Input::get("video"), $matches);
-            if (count($matches) <= 0) {
+           preg_match('/youtube\.[a-zA-Z]+\/watch\?v=([^&]+)/', Input::get("video"), $matches);
+            if (count($matches) <= 0 || strlen($matches[1]) != 11) {
                 Session::flash("message","An invalid YouTube link was submitted");
                 return Redirect::back();
            }
             $video->video = $matches[1];
 
-           $validator = Video::validate(Input::all());
+           $validator = Video::validate(get_object_vars($video));
            if ($validator->failed())  {
                Session::flash("errors", $validator->messages()->all());
                Redirect::back();
            } else {
                $video->save();
-              Session::flash("message", "$video->title added successfully.");
+               Session::flash("message", "$video->title added successfully.");
+               Redirect::to("videos/" . $video->id);
            }
        } else {
            Session::flash("message", "You do not have permission to access this.");
