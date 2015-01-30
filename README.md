@@ -25,13 +25,13 @@ Composer will install the additional dependencies.
 
 Enter the below commands into a terminal to get setup with the demo webapp running on a local test server with randomized data already inserted.
 
-#+BEGIN_EXAMPLE
-$ git clone https://github.com/afmartin/WatchBot.git
-$ composer install
-$ artisan migrate
-$ artisan db:seed
-$ artisan serve
-#+END_EXAMPLE
+
+    $ git clone https://github.com/afmartin/WatchBot.git
+    $ composer install
+    $ artisan migrate
+    $ artisan db:seed
+    $ artisan serve
+
 
 Running `composer install` will install necessary dependencies.  
 Running the server through Artisan should only be used for testing locally. 
