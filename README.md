@@ -17,6 +17,7 @@ This is a thorough list of everything possible on the website:
 
 1. PHP >= 5.4
 2. MCrypt PHP Extension
+3. PHP5-sqlite
 
 Composer will install the additional dependencies.  
 
