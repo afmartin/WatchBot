@@ -17,7 +17,6 @@ This is a thorough list of everything possible on the website:
 
 1. PHP >= 5.4
 2. MCrypt PHP Extension
-3. Composer
 
 Composer will install the additional dependencies.  
 
@@ -29,7 +28,9 @@ Enter the below commands into a terminal to get setup with the demo webapp runni
 
 
     $ git clone https://github.com/afmartin/WatchBot.git
-    $ php composer install
+    $ cd WatchBot
+    $ curl -sS https://getcomposer.org/installer | php
+    $ php composer.phar install
     $ php artisan migrate
     $ php artisan db:seed
     $ php artisan serve
