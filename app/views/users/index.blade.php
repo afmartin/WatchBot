@@ -4,7 +4,6 @@
 
 <h3>Users</h3>
 
-<ul>
 <table>
 <tr>
 <th>ID #</th>
@@ -13,9 +12,9 @@
 </tr>
 @foreach($users as $user)
     <tr>
-        <td>#{{ $user->id }}</td>
-        <td><b><a href="{{ url("users/show/$user->username")}}">{{ $user->username }}</a></b></td>
-        <td> | {{ $user->email }} </td>
+        <td>#{{{ $user->id }}}</td>
+        <td><b><a href="{{{ url("users/show/$user->username")}}}">{{{ $user->username }}}</a></b></td>
+        <td> | {{{ $user->email }}} </td>
     </tr>
 @endforeach
 </table>

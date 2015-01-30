@@ -163,7 +163,7 @@ class UserController extends BaseController {
 
     public function logout() {
         Auth::logout();
-        Session::flash("message", "Sucessfully logged out.");
+        Session::flash("message", "Successfully logged out.");
         return Redirect::to('/');
     }
 

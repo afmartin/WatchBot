@@ -13,9 +13,11 @@
 
 App::before(function($request)
 {
-	//
+	// If you're using mySQL uncomment:
+	// $videos = Video::orderByRaw("RAND()")->get();
+	$videos = Video::orderBy("id", "desc")->get()->take(10);
+	View::share("side_videos", $videos);
 });
-
 
 App::after(function($request, $response)
 {

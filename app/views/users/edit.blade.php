@@ -21,7 +21,7 @@
     {{ Form::label('password', 'New Password') }}
     {{ Form::password('password') }}
     
-    {{ Form::label('password_confirmation', 'New Password') }}
+    {{ Form::label('password_confirmation', 'Confirm New Password') }}
     {{ Form::password('password_confirmation') }}
 
 
@@ -30,6 +30,6 @@
 
     {{ Form::close() }}
 
-<a href="{{ url("users/destroy") }}">Delete Account</a>
+<a href="{{{ url("users/destroy") }}}">Delete Account</a>
 
 @stop

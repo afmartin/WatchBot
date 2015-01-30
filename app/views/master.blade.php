@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A layout example that shows off a responsive product landing page.">
 
-    <title>WatchBot |  {{ $title }}</title>
+    <title>WatchBot |  {{{ $title }}}</title>
 
 
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
@@ -31,10 +31,10 @@
 
   
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="{{ asset("css/layouts/marketing-old-ie.css" ) }}>
+        <link rel="stylesheet" href="{{{ asset("css/layouts/marketing-old-ie.css" ) }}}>
     <![endif]-->
     <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="{{ asset("css/layouts/marketing.css") }}">
+        <link rel="stylesheet" href="{{{ asset("css/layouts/marketing.css") }}}">
     <!--<![endif]-->
   
 
@@ -48,17 +48,17 @@
 
 <div class="header">
     <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="{{ url("/") }}">WatchBot</a>
+        <a class="pure-menu-heading" href="{{{ url("/") }}}">WatchBot</a>
 
         <ul>
 
-            <li class="pure-menu-selected"><a href="{{ url("/") }}">Home</a></li>
-            <li><a href="{{ url("videos") }}">Videos</a></li>
-            <li><a href="{{ url("users") }}">Profiles</a></li>
+            <li class="pure-menu-selected"><a href="{{{ url("/") }}}">Home</a></li>
+            <li><a href="{{{ url("videos") }}}">Videos</a></li>
+            <li><a href="{{{ url("users") }}}">Profiles</a></li>
             @if( Auth::check() )
-                <li><a href="{{ url("logout") }}">Logout</a></li>
+                <li><a href="{{{ url("logout") }}}">Logout</a></li>
             @else
-                <li><a href="{{ url("users/register") }}">Sign Up</a></li>
+                <li><a href="{{{ url("users/register") }}}">Sign Up</a></li>
             @endif  
         </ul>
     </div>
@@ -70,13 +70,13 @@
         @if(Session::has('errors'))
             <ul style="font-weight:bold; border: 2px RED solid;">
             @foreach( Session::pull('errors') as $error) 
-                <li>{{ $error }}</li>
+                <li>{{{ $error }}}</li>
             @endforeach
             </ul>
         @endif 
 
         @if(Session::has('message'))
-            <p style="font-weight:bold; border:2px black solid; text-align:center;">{{ Session::pull('message') }}</p>
+            <p style="font-weight:bold; border:2px black solid; text-align:center;">{{{ Session::pull('message') }}}</p>
         @endif
 
         @yield('content')
@@ -88,21 +88,21 @@
 
         <p>Welcome guest!  We recommend logging in to enjoy our services.</p>
 
-        {{ Form::open(array('url' => 'login')) }} 
+        {{ Form::open(array('url' => 'login')) }}
             {{ Form::label('username', 'Username') }}
             {{ Form::text('username') }}
         
             {{ Form::label('password', 'Password') }}
             {{ Form::password('password') }}
 
-            {{ Form::submit('Log in', array( 
+            {{ Form::submit('Log in', array(
                         'class' => 'pure-button pure-button-primary')) }}
 
-        {{ Form::close() }} 
+        {{ Form::close() }}
         @else
         <br>
         <h3>
-        Welcome back, {{ Auth::user()->username }}  
+        Welcome back, {{{ Auth::user()->username }}}
         </h3>
 
         <p>
@@ -110,8 +110,8 @@
         </p>
 
         <ul>
-            <li><a href="{{ url("users/edit") }}">My Account</a></li>
-            <li><a href="{{ url("logout") }}">Log out</a></li>
+            <li><a href="{{{ url("users/edit") }}}">My Account</a></li>
+            <li><a href="{{{ url("logout") }}}">Log out</a></li>
         </ul>
 
 
@@ -119,6 +119,10 @@
 
 
         <h3>Videos to Watch</h3>
+
+            @foreach ($side_videos as $side_vid)
+                <a href="{{{ url("/videos/show/" . $side_vid->id ) }}}"><img src="http://i.ytimg.com/vi/{{{ $side_vid->video }}}/default.jpg"></a>
+            @endforeach
     </div>
 </div>
 </body>

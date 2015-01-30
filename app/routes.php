@@ -34,3 +34,5 @@ Route::post('/users/destroy', 'UserController@Destroy');
 Route::get('/videos', 'VideoController@index');
 Route::get('/videos/show/{id}', 'VideoController@show');
 Route::get('/videos/from/{username}', 'VideoController@from');
+Route::get('/videos/new/', 'VideoController@showCreate');
+Route::post('/videos/create/', 'VideoController@doCreate');

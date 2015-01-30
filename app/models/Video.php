@@ -4,6 +4,7 @@ class Video extends Eloquent {
 
     protected $table = "videos";
 
+    protected $hidden = array('video');
 
     public function user() {
         return $this->belongsTo('User');

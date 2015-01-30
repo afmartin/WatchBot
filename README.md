@@ -13,9 +13,28 @@ This is a thorough list of everything possible on the website:
 - Post a link to a YouTube video
 - See a posted video (which is an embedded YouTube video).
 
-## YouTube API
+## Requirements
 
-If possible within deadline for assignment, WatchBot will query YouTube's API for video details.
+1. PHP >= 5.4
+2. MCrypt PHP Extension
+3. Composer
+
+Composer will install the additional dependencies.  
+
+## Installation
+
+Enter the below commands into a terminal to get setup with the demo webapp running on a local test server with randomized data already inserted.
+
+#+BEGIN_EXAMPLE
+$ git clone https://github.com/afmartin/WatchBot.git
+$ composer install
+$ artisan migrate
+$ artisan db:seed
+$ artisan serve
+#+END_EXAMPLE
+
+Running `composer install` will install necessary dependencies.  
+Running the server through Artisan should only be used for testing locally. 
 
 ## PureCSS 
 
