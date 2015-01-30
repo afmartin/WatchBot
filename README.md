@@ -17,20 +17,24 @@ This is a thorough list of everything possible on the website:
 
 1. PHP >= 5.4
 2. MCrypt PHP Extension
-3. Composer
+3. PHP5-sqlite
 
 Composer will install the additional dependencies.  
 
 ## Installation
 
+You can download Composer at: https://getcomposer.org/doc/00-intro.md
+
 Enter the below commands into a terminal to get setup with the demo webapp running on a local test server with randomized data already inserted.
 
 
     $ git clone https://github.com/afmartin/WatchBot.git
-    $ composer install
-    $ artisan migrate
-    $ artisan db:seed
-    $ artisan serve
+    $ cd WatchBot
+    $ curl -sS https://getcomposer.org/installer | php
+    $ php composer.phar install
+    $ php artisan migrate
+    $ php artisan db:seed
+    $ php artisan serve
 
 
 Running `composer install` will install necessary dependencies.  
