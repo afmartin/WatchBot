@@ -6,12 +6,13 @@ This is a demo webapp that uses user authentication.  When users are authenticat
 ## List of Actions
 
 This is a thorough list of everything possible on the website:
-- Register/login/logout
-- Modify profile
-- Browse other users
-- See a user's profile.
-- Post a link to a YouTube video
-- See a posted video (which is an embedded YouTube video).
+- Create an account, login and logout
+- Modify your profile
+- View other profiles
+- Have a table of videos that are YouTube embeds.
+- Post a video if logged in 
+- Edit said video
+- See a list of new videos every page
 
 ## Requirements
 
@@ -22,8 +23,6 @@ This is a thorough list of everything possible on the website:
 Composer will install the additional dependencies.  
 
 ## Installation
-
-You can download Composer at: https://getcomposer.org/doc/00-intro.md
 
 Enter the below commands into a terminal to get setup with the demo webapp running on a local test server with randomized data already inserted.
 
@@ -38,11 +37,14 @@ Enter the below commands into a terminal to get setup with the demo webapp runni
 
 
 Running `composer install` will install necessary dependencies.  
+
+`Artisan db:seed` is option, it sets up the database with sample data.
+
 Running the server through Artisan should only be used for testing locally. 
 
-## PureCSS 
+If Laravel is reporting that you are missing the sqlite driver, in Debian based distributions do:
 
-This project uses PureCSS (http://purecss.io/) for responsive web design.  PureCSS is licenses under the Yahoo BSD license included in the Public directory.
+    $ sudo apt-get install php5-sqlite
 
 ## License
 
