@@ -11,7 +11,7 @@
     {{Form::label("description", "Description")}}
     {{Form::textarea("description")}}
 
-    {{Form::label("video", "YouTube Video")}}
+    {{Form::label("video", "YouTube  (URL)")}}
     {{Form::text("video")}}
 
     {{Form::submit("Submit", array(

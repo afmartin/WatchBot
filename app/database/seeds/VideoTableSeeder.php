@@ -5,7 +5,7 @@ class VideoTableSeeder extends Seeder {
     public function run() {
         $faker = Faker\Factory::create();
 
-        $videos = array ("V2lL30qF3Gw",
+        $videos = array ("lQNFfhC4QI8",
                          "6ocl2noqN-c",
                          "qwyZ0ji1GRU",
                          "A1EESKnq9Js",

@@ -1,6 +1,7 @@
 @if(count($videos) == 0)
    <b><p>The user has no videos shared.</p></b>
 @else
+    <a href="{{{ url("/videos/new") }}}">Add a Video</a>
    <table>
             <tr>
                 <th>Thumbnail</th>
@@ -28,4 +29,3 @@
 
 @endif
 
-<a href="{{{ url("/videos/new") }}}">Add a Video</a>

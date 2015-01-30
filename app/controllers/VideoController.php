@@ -45,7 +45,7 @@ class VideoController extends BaseController {
      */
 
     public function index() {
-        $videos = Video::all();
+        $videos = Video::orderBy("id", "desc")->get();
 
         $data = array(
             "title" => "Videos",
