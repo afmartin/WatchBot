@@ -1,5 +1,12 @@
 <?php
-
+/***********************************
+ * WatchBot
+ *
+ * Alexander Martin
+ * MacEwan University
+ * CMPT 395 - AS40
+ * January 30th, 2014
+ ***********************************/
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
@@ -47,6 +54,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $validator;
     }
 
+    /**
+     * On editing validation isn't as strict.
+     *
+     * @param $input
+     * @return \Illuminate\Validation\Validator
+     */
     public static function update_validate($input) {
         $rules = array ( 'username' => 'Min:5|Unique:users',
                          'email' => 'Email|Unique:users',

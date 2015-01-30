@@ -1,5 +1,12 @@
 <?php
-
+/***********************************
+ * WatchBot
+ *
+ * Alexander Martin
+ * MacEwan University
+ * CMPT 395 - AS40
+ * January 30th, 2014
+ ***********************************/
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -36,3 +43,6 @@ Route::get('/videos/show/{id}', 'VideoController@show');
 Route::get('/videos/from/{username}', 'VideoController@from');
 Route::get('/videos/new/', 'VideoController@showCreate');
 Route::post('/videos/create/', 'VideoController@doCreate');
+Route::get('/videos/destroy/{id}', 'VideoController@destroy');
+Route::get('/videos/edit/{id}', 'VideoController@edit');
+Route::post('/videos/update/{id}', 'VideoController@update');

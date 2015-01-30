@@ -6,6 +6,7 @@
 <a href="{{{ url("videos/from/" . $user->username) }}}">View Videos Shared</a>
 
 <h5>Email: {{{ $user->email }}}</h5>
+<h5>Registered: {{{ $user->created_at }}}</h5>
 <h5>Bio</h5>
 <p>{{{ $user->bio }}}</p>
 

@@ -1,5 +1,12 @@
 <?php
-
+/***********************************
+ * WatchBot
+ *
+ * Alexander Martin
+ * MacEwan University
+ * CMPT 395 - AS40
+ * January 30th, 2014
+ ***********************************/
 class HomeController extends BaseController {
 
 	/*

@@ -10,6 +10,7 @@
     <iframe width="853" height="430" src="https://www.youtube.com/embed/{{{ $video->video }}}" frameborder="0" allowfullscreen></iframe>
 
     <p>View count: {{{ $video->views }}}</p>
+        <p>Added: {{{ $video->created_at }}}</p>
     <hr>
     <p>{{{ $video->description }}}</p>
     </div>

@@ -7,7 +7,7 @@
                 <th>Title</th>
                 <th>View Count</th>
                 <th>From</th>
-                <th>Edit</th>
+                <th>Owner?</th>
             </tr>
     @foreach($videos as $video)
 
@@ -17,7 +17,7 @@
             <td>{{{ $video->views }}}</td>
             <td><a href="{{{ url("/videos/from/" .  $video->user->username) }}}">{{{ $video->user->username }}}</a></td>
             <td>
-            @if ($owner)
+            @if(Auth::user() == $video->user)
                 <a href="{{{ url("videos/edit/" .  $video->id) }}}">Edit</a>
             @endif
             </td>

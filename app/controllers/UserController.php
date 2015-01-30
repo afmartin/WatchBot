@@ -1,11 +1,20 @@
 <?php
-
+/***********************************
+ * WatchBot
+ *
+ * Alexander Martin
+ * MacEwan University
+ * CMPT 395 - AS40
+ * January 30th, 2014
+ ***********************************/
 
 class UserController extends BaseController {
 
 
     /**
      * Produces a list of users.
+     *
+     * @return View
      */
     public function index() {
         $users = User::all();
@@ -16,7 +25,9 @@ class UserController extends BaseController {
     }
 
     /**
+     * Shows a user's profile
      *
+     * @return View
      */
     public function show($username) {
         try {
@@ -30,16 +41,24 @@ class UserController extends BaseController {
         return View::make('users/show')->with($data);
     }
 
+    /**
+     * Runs an update on a user's profile
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update() {
         $user = User::where('username', '=', Auth::user()->username)->firstOrFail();
 
         if (Hash::check(Input::get('old_password'), $user->password)) {
             $user_input = Input::all();
 
-            if ($user_input['email'] == $user->email) 
+            // Make sure we're not changing a user's field to null
+            if ($user_input['email'] == $user->email) {
                 $user_input['email'] = null;
-            if ($user_input['username'] == $user->username)
+            }
+            if ($user_input['username'] == $user->username) {
                 $user_input['username'] = null;
+            }
 
             $validator = User::update_validate($user_input);
             if ($validator->fails()) {
@@ -67,9 +86,13 @@ class UserController extends BaseController {
             Session::flash('message', "You have entered your current password incorrectly.");
             return Redirect::to("users/edit");
         }
-
     }
 
+    /**
+     * Renders the update profile page.
+     *
+     * @return View
+     */
     public function edit() {
         if (Auth::check()) { 
             $user = User::where('username','=', Auth::user()->username)->firstOrFail();
@@ -84,10 +107,20 @@ class UserController extends BaseController {
 
     }
 
+    /**
+     * Renders register page
+     *
+     * @return View
+     */
     public function showRegister() {
         return View::make('users/register')->with('title',  'Register');
     }
 
+    /**
+     * Actually register the user.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function doRegister() {
         $input = Input::all();
         $validator = User::register_validate($input);
@@ -107,12 +140,16 @@ class UserController extends BaseController {
 
 
             $username = Input::get('username');
-            $data = array (
-                'title' => 'Registered');
-            Session::flash('message', "$username sucessfully registered!  Thank you.");
+            Session::flash('message', "$username successfully registered!  Thank you.");
             return Redirect::to('/');
         }
     }
+
+    /**
+     * Deletes the currently logged in user from database
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function Destroy() {
         if (Auth::check()) {
             $user = User::where('username','=', Auth::user()->username)->firstOrFail();
@@ -139,7 +176,11 @@ class UserController extends BaseController {
         }
     }
 
-
+    /**
+     * Show the user delete page
+     *
+     * @return View
+     */
     public function showDestroy() {
         if (Auth::check()) {
             $data = array (
@@ -151,17 +192,28 @@ class UserController extends BaseController {
         }
     }
 
+    /**
+     * Logs the user in
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function login() {
         $credentials = Input::only('username', 'password');
         if (Auth::attempt($credentials)) {
             return Redirect::to("/");
         } else {
             Session::flash('message', 'Invalid credentials');
-            return Redirect::to('/');
+            return Redirect::back();
         }
     }
 
+    /**
+     * Logs the user out
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout() {
+        // That was easier than I was expecting
         Auth::logout();
         Session::flash("message", "Successfully logged out.");
         return Redirect::to('/');
