@@ -79,3 +79,9 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+App::missing(function($exception) {
+	Session::flash("message", "404: Page not found.");
+	return Redirect::to("/");
+});
