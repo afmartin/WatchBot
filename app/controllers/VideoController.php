@@ -22,7 +22,7 @@ class VideoController extends BaseController {
             $video = Video::where("id", "=", $id)->firstOrFail();
         } catch (Exception $e) {
             Session::flash("message", "Video not found.");
-            Redirect::to("/videos");
+            return Redirect::to("/videos");
         }
 
         // Update the view count
@@ -68,7 +68,7 @@ class VideoController extends BaseController {
             $user = User::where("username", "=", $username)->firstOrFail();
         } catch (Exception $e) {
             Session::flash("message", "Not a valid user.");
-            Redirect::to("/videos");
+            return Redirect::to("/videos");
         }
 
         // Ok so we have the user now lets find the videos
