@@ -2,6 +2,7 @@
 
 @section("content")
     <h3>Edit Video</h3>
+
 {{ Form::open(array('url' => "videos/update/$video->id")) }}
 
 {{Form::label("title", "Title")}}

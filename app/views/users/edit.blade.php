@@ -4,6 +4,8 @@
 @section("content")
 <h3>Edit Profile</h3>
 
+<p>Fields left the same or blank will not be modified.</p>
+
 {{ Form::open(array('url' => 'users/update')) }}
     {{ Form::label('email', 'Email Address') }}
     {{ Form::text('email', $user->email ) }}

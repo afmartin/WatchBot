@@ -228,14 +228,17 @@ class VideoController extends BaseController {
                $video_input["title"] = null;
            }
 
-           $validator = Video::edit_validate($video_input);
+            $validator = Video::edit_validate($video_input);
            if  ($validator->fails()) {
                Session::flash("errors", $validator->messages()->all());
                return Redirect::back();
            }
 
            // Now let's get original input so we don't put null if no change ;)
-           $video->title = Input::get("title");
+           if (Input::get("title")) {
+             $video->title = Input::get("title");
+           }
+
            $video->description = Input::get("description");
 
 
