@@ -1,14 +1,14 @@
 # WatchBot 
 ### CMPT 395 - Software Engineering Assignment - MacEwan University
 
-This is a demo webapp that uses user authentication.  When users are authenticated they can post videos from YouTube to be added to the video table.  
+This is a demo webapp that uses user authentication.  When users are authenticated they can post videos from YouTube.
 
 ## List of Actions
 
 This is a thorough list of everything possible on the website:
 - Create an account, login and logout
 - Modify your profile
-- View other profiles
+- View other user profiles
 - Have a table of videos that are YouTube embeds.
 - Post a video if logged in 
 - Edit said video
@@ -24,7 +24,7 @@ Composer will install the additional dependencies.
 
 ## Installation
 
-Enter the below commands into a terminal to get setup with the demo webapp running on a local test server with randomized data already inserted.
+Enter the below commands into a terminal to get setup for using the webapp demo:
 
 
     $ git clone https://github.com/afmartin/WatchBot.git
@@ -38,7 +38,7 @@ Enter the below commands into a terminal to get setup with the demo webapp runni
 
 Running `composer install` will install necessary dependencies.  
 
-`Artisan db:seed` is option, it sets up the database with sample data.
+`Artisan db:seed` is optional, it sets up the database with sample data.
 
 Running the server through Artisan should only be used for testing locally. 
 
@@ -48,7 +48,7 @@ If Laravel is reporting that you are missing the sqlite driver, in Debian based 
 
 ## License
 
-Code in the app folder is licensed the MIT license.  
+WatchBot is licenses under the MIT license. 
 
 
 
